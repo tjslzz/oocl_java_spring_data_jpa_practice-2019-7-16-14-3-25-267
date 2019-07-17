@@ -23,7 +23,7 @@ public class CompanyResource {
         return company;
     }
 
-    @PutMapping(produces = {"application/json;"})
+    @PutMapping(produces = {"application/json;charset=UTF-8"})
     public Company put(@RequestBody Company company){
         companyRepository.save(company);
         return company;
