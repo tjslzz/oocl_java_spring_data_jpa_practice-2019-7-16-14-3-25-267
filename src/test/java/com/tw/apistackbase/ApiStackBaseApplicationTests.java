@@ -41,4 +41,29 @@ public class ApiStackBaseApplicationTests {
 						"}"));
 	}
 
+	@Test
+	public void should_return_company_list_when_get_companies() throws Exception {
+		mockMvc.perform(get("/companies"))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().json("[\n" +
+						"    {\n" +
+						"        \"id\": 1,\n" +
+						"        \"name\": \"jerryLi\"\n" +
+						"    },\n" +
+						"    {\n" +
+						"        \"id\": 33,\n" +
+						"        \"name\": \"felicity\"\n" +
+						"    },\n" +
+						"    {\n" +
+						"        \"id\": 34,\n" +
+						"        \"name\": \"felicity\"\n" +
+						"    },\n" +
+						"    {\n" +
+						"        \"id\": 35,\n" +
+						"        \"name\": \"felicity\"\n" +
+						"    }\n" +
+						"]"));
+	}
+
 }

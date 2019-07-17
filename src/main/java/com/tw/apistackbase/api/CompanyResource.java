@@ -22,4 +22,6 @@ public class CompanyResource {
         companyRepository.save(company);
         return company;
     }
+
+
 }
