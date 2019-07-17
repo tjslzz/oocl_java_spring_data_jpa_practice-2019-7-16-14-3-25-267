@@ -5,6 +5,10 @@ import com.tw.apistackbase.core.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @RestController
 @RequestMapping("/companies")
 public class CompanyResource {
@@ -41,8 +45,14 @@ public class CompanyResource {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteByPath(@PathVariable("id") Long id){
+    public String deleteByPath(@PathVariable Long id){
         companyRepository.deleteById(id);
         return "ok";
     }
+
+    @GetMapping("/{name}")
+    public Company findByName(@PathVariable String name){
+        return companyRepository.findByName(name);
+    }
+
 }

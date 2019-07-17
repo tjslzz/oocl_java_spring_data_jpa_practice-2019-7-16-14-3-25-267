@@ -12,6 +12,9 @@ public class Company {
 
     private String name;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Profile profile;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Employee> employees;
 
@@ -34,8 +37,9 @@ public class Company {
     public Company() {
     }
 
-    public Company(String name, List<Employee> employees) {
+    public Company(String name, Profile profile, List<Employee> employees) {
         this.name = name;
+        this.profile = profile;
         this.employees = employees;
     }
 
@@ -45,5 +49,13 @@ public class Company {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 }
