@@ -23,5 +23,9 @@ public class CompanyResource {
         return company;
     }
 
-
+    @PutMapping(produces = {"application/json;"})
+    public Company put(@RequestBody Company company){
+        companyRepository.save(company);
+        return company;
+    }
 }
