@@ -30,13 +30,19 @@ public class CompanyResource {
     }
 
     @DeleteMapping
-    public String delete(@RequestParam(value = "id",defaultValue = "0",required = false) String id){
-        if (id.equalsIgnoreCase("0")){
+    public String delete(@RequestParam(value = "id",required = false) Long id){
+        if (id == null){
             companyRepository.deleteAll();
         }
         else {
             companyRepository.deleteById(Long.valueOf(id));
         }
+        return "ok";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteByPath(@PathVariable("id") Long id){
+        companyRepository.deleteById(id);
         return "ok";
     }
 }
