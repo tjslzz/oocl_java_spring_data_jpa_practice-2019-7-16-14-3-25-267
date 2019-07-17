@@ -28,4 +28,15 @@ public class CompanyResource {
         companyRepository.save(company);
         return company;
     }
+
+    @DeleteMapping
+    public String delete(@RequestParam(value = "id",defaultValue = "0",required = false) String id){
+        if (id.equalsIgnoreCase("0")){
+            companyRepository.deleteAll();
+        }
+        else {
+            companyRepository.deleteById(Long.valueOf(id));
+        }
+        return "ok";
+    }
 }
