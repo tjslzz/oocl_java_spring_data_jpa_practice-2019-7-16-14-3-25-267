@@ -16,10 +16,6 @@ public class CompanyResource {
     @Autowired
     private CompanyRepository companyRepository;
 
-    @GetMapping(produces = {"application/json"})
-    public Iterable<Company> list() {
-        return companyRepository.findAll();
-    }
     
     @PostMapping(produces = {"application/json"})
     public Company add(@RequestBody Company company) {

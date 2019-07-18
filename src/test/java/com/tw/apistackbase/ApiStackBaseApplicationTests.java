@@ -12,6 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -34,13 +35,4 @@ public class ApiStackBaseApplicationTests {
 
 	@Autowired
 	private SingleEntityRepository singleEntityRepository;
-
-	@Test
-	@DirtiesContext
-	public void should_be_able_to_create_and_fetch_entity(){
-		SingleEntity singleEntity = new SingleEntity("jerryLi");
-		singleEntityRepository.save(singleEntity);
-		List<SingleEntity> result = (List<SingleEntity>) singleEntityRepository.findAll();
-		assertEquals(1,result.size());
-	}
 }

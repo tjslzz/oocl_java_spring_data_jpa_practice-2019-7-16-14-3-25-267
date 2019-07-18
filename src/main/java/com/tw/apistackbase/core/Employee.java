@@ -1,9 +1,6 @@
 package com.tw.apistackbase.core;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
@@ -14,12 +11,22 @@ public class Employee {
     private String name;
     private Integer age;
 
+    @ManyToOne
+    @JoinColumn(name = "com_id",referencedColumnName = "id")
+    private Company company;
+
     public Employee() {
     }
 
     public Employee(String name, Integer age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Employee(String name, Integer age, Company company) {
+        this.name = name;
+        this.age = age;
+        this.company = company;
     }
 
     public Long getId() {
@@ -44,5 +51,13 @@ public class Employee {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }
